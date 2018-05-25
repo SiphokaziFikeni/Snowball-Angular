@@ -1,11 +1,16 @@
 machine:
   node:
-    version: 4.2.2
+    version: 8.11.2
 
 dependencies:
   override:
-    - npm install
+    - nvm install 6 && npm install
+  pre:
+    - rm -rf ./node_modules
+  cache_directories:
+    - ~/.npm  
 
 test:
   override:
-    - npm test
+    - nvm use 4 && npm run test-server-all
+    - nvm use 6 && npm run ci
