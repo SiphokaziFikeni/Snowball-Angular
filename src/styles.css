@@ -3165,15 +3165,16 @@ iframe {
   justify-content: center;
   align-items: center;
   padding: 15px;
-  background: #9053c7;
-  background: -webkit-linear-gradient(-135deg, #c850c0, #4158d0);
-  background: -o-linear-gradient(-135deg, #c850c0, #4158d0);
-  background: -moz-linear-gradient(-135deg, #c850c0, #4158d0);
-  background: linear-gradient(-135deg, #c850c0, #4158d0);
+  background: #3360FF;
+  background: -webkit-linear-gradient(-135deg, #1404eb, #4158d0);
+  background: -o-linear-gradient(-135deg, #508ec8, #4158d0);
+  background: -moz-linear-gradient(-135deg, #abeeff, #4158d0);
+  background: linear-gradient(-135deg, #b6e6f1, #4158d0);
 }
 
 .wrap-login100 {
-  width: 960px;
+  width: 900px;
+  height: 600px;
   background: #fff;
   border-radius: 10px;
   overflow: hidden;
@@ -3185,17 +3186,19 @@ iframe {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  padding: 177px 130px 33px 95px;
+  padding: 70px 130px 33px 55px;
 }
 
 /*------------------------------------------------------------------
 [  ]*/
 .login100-pic {
-  width: 316px;
+  width: 360px;
+  height: 450px;
 }
 
 .login100-pic img {
   max-width: 100%;
+  margin-top: 60px;
 }
 
 
@@ -3253,7 +3256,7 @@ iframe {
   width: 100%;
   height: 100%;
   box-shadow: 0px 0px 0px 0px;
-  color: rgba(87,184,70, 0.8);
+  color: rgba(51, 130, 233, 0.8);
 }
 
 .input100:focus + .focus-input100 {
@@ -3301,7 +3304,7 @@ iframe {
 }
 
 .input100:focus + .focus-input100 + .symbol-input100 {
-  color: #57b846;
+  color: rgba(51, 130, 233, 0.8);
   padding-left: 28px;
 }
 
@@ -3329,7 +3332,7 @@ iframe {
   width: 100%;
   height: 50px;
   border-radius: 25px;
-  background: #57b846;
+  background: #3370e0;
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -3346,7 +3349,7 @@ iframe {
 }
 
 .login100-form-btn:hover {
-  background: #333333;
+  background: #27a316;
 }
 
 
