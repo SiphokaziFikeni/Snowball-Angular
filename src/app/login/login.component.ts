@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from "../services/auth.service";
 // import { User } from '../users/shared/user.model';
 import { ReactiveFormsModule, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -31,7 +32,7 @@ export class LoginComponent implements OnInit {
     }
   };
 
-  constructor(private formBuilder: FormBuilder, private auth: AuthService) { }
+  constructor(private formBuilder: FormBuilder, public route: ActivatedRoute, public router: Router, private auth: AuthService) { }
 
   ngOnInit(): void {
     this.buildForm();
@@ -50,7 +51,12 @@ export class LoginComponent implements OnInit {
   // }
 
   login() {
-    this.auth.emailLogin(this.userForm.value['email'], this.userForm.value['password']);
+    const scope = this;
+    this.auth.emailLogin(this.userForm.value['email'], this.userForm.value['password'])
+    .then( (results) => {
+      
+      scope.router.navigate(['dashboard']);
+    });
   }
 
   // signup(): void {

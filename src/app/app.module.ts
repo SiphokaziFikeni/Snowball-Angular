@@ -20,6 +20,13 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 
 import { AuthService } from './services/auth.service';
 import { RouterModule, Routes} from '@angular/router';
+
+const appRoutes: Routes = [
+  { path: 'login', component: LoginComponent },
+  { path: 'dashboard', component: DashboardComponent },
+  { path: '', component: LoginComponent }  
+];
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +42,10 @@ import { RouterModule, Routes} from '@angular/router';
     UiModule,
     AngularFireModule.initializeApp(environment.firebaseConfig, 'angular-auth-firebase'),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    RouterModule.forRoot(
+      appRoutes
+    )
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
