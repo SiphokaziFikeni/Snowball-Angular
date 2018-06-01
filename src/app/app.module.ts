@@ -48,6 +48,7 @@ const appRoutes: Routes = [
     )
   ],
   providers: [AuthService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [UserComponent, UsersComponent, UserListComponent]
 })
 export class AppModule { }

@@ -38,10 +38,10 @@ export class AuthService {
       }
     }
 
-    // logout() {
-    //   this._firebaseAuth.auth.signOut()
-    //   .then((res) => this.router.navigate(['/']));
-    // }
+    logout() {
+      this._firebaseAuth.auth.signOut();
+      // .then((res) => this.router.navigate(['/']));
+    }
 
     // emailSignUp(credentials: EmailPasswordCredentials): firebase.Promise<FirebaseAuthState> {
     //   return this.af.auth.createUser(credentials)

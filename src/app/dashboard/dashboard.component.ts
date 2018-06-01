@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HeaderComponent } from '../ui/header/header.component';
+import { UsersComponent } from '../users/users.component';
 
 @Component({
   selector: 'app-dashboard',

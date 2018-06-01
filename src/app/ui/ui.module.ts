@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { LayoutComponent } from './layout/layout.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { AuthService } from '../services/auth.service';
 
 @NgModule({
   imports: [
@@ -10,6 +11,6 @@ import { FooterComponent } from './footer/footer.component';
   ],
   declarations: [LayoutComponent, HeaderComponent, FooterComponent
   ],
-  exports:[LayoutComponent]
+  exports:[LayoutComponent, HeaderComponent, FooterComponent]
 })
 export class UiModule { }
