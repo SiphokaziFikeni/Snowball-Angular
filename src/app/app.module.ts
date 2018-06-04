@@ -1,7 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule} from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { UiModule } from './ui/ui.module';
+import { ToastrModule } from 'ngx-toastr';
 
 import { AppComponent } from './app.component';
 
@@ -20,6 +22,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 
 import { AuthService } from './services/auth.service';
 import { RouterModule, Routes} from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -39,13 +42,16 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     ReactiveFormsModule,
+    FormsModule,
     UiModule,
     AngularFireModule.initializeApp(environment.firebaseConfig, 'angular-auth-firebase'),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     RouterModule.forRoot(
       appRoutes
-    )
+    ),
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent],

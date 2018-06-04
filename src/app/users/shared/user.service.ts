@@ -1,30 +1,47 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import { FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database-deprecated';
 import { User } from './user.model';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  userList: AngularFireList<any>;
-  selectedUser: User = new User();
+  // userList: AngularFireList<any>;
+  // userList: FirebaseListObservable<any> = null;
 
-  constructor(private firebase : AngularFireDatabase) { }
+  userListRef: AngularFireList<any>;
+  userList: Observable<any>;
+  selectedUser: User = new User();
+  private basePath: string = '/users';
+
+  constructor(private firebase : AngularFireDatabase) {
+    this.userListRef = this.firebase.list('users');
+    this.userList = this.userListRef.valueChanges();
+
+    this.getData();
+   }
 
   getData(){
-    this.userList = this.firebase.list('users');
-    return this.userList;
+    console.log(this.userListRef[0]);
+    //  this.userList = this.firebase.list('users');
+    // this.userList = this.firebase.list(this.basePath, {
+    //   ref => ref.orderByKey()
+    // });
+    // return this.userList;
   }
 
   insertUser(user : User){
-    this.userList.push({
+    console.log("insertUser called in service");
+    this.userListRef.push({
       email: user.email,
       password: user.password
     });
   }
 
   updateUser(user : User){
-    this.userList.update(user.$key,
+    this.userListRef.update(user.$key,
     {
       email: user.email,
       password: user.password
@@ -32,7 +49,7 @@ export class UserService {
   }
 
   deleteUser($key : string){
-    this.userList.remove($key);
+    this.userListRef.remove($key);
   }
 
 
