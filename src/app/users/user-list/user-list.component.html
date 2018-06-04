@@ -1,15 +1,20 @@
 <h6 class="text-center">Registered Users</h6><br/>
 <table class="table table-sm table-hover">
+  <th>Name</th>
+  <th>Email</th>
+  <th>Age</th>
+  <th>Actions</th>
   <tr *ngFor="let user of userList">
     <td>{{user.name}}</td>
-      <td>{{user.email}}</td>
-      <td>
-        <a class="btn" (click)="onEdit(user)">
-          <i class="fa fa-pencil-square-o"></i>
-        </a>
-        <a class="btn" (click)="onDelete(user.$key)">
-          <i class="fa fa-trash-o"></i>
-        </a>
-      </td>
+    <td>{{user.email}}</td>
+    <td>{{user.age}}</td>
+    <td>
+      <a class="btn" (click)="onEdit(user)">
+        <i class="fa fa-pencil-square-o"></i>
+      </a>
+      <a class="btn" (click)="onDelete(user.$key)">
+        <i class="fa fa-trash-o"></i>
+      </a>
+    </td>
   </tr>
 </table>

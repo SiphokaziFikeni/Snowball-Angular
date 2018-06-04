@@ -28,7 +28,7 @@ export class UserService {
     this.userListRef.push({
       name: user.name,
       email: user.email,
-      password: user.password
+      age: user.age
     });
   }
 
@@ -37,7 +37,7 @@ export class UserService {
     {
       name: user.name,
       email: user.email,
-      password: user.password
+      age: user.age
     })
   }
 

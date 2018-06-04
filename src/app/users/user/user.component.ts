@@ -34,7 +34,7 @@ export class UserComponent implements OnInit {
       $key: null,
       name: '',
       email: '',
-      password: ''
+      age: 0
     }
   }
 
