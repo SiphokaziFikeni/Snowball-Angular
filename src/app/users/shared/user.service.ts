@@ -8,8 +8,6 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
-  // userList: AngularFireList<any>;
-  // userList: FirebaseListObservable<any> = null;
 
   userListRef: AngularFireList<any>;
   userList: Observable<any>;
@@ -19,21 +17,14 @@ export class UserService {
   constructor(private firebase : AngularFireDatabase) {
     this.userListRef = this.firebase.list('users');
     this.userList = this.userListRef.valueChanges();
-
-    this.getData();
    }
 
   getData(){
-    console.log(this.userListRef[0]);
-    //  this.userList = this.firebase.list('users');
-    // this.userList = this.firebase.list(this.basePath, {
-    //   ref => ref.orderByKey()
-    // });
-    // return this.userList;
+    this.userListRef = this.firebase.list('users');
+    return this.userListRef;
   }
 
   insertUser(user : User){
-    console.log("insertUser called in service");
     this.userListRef.push({
       email: user.email,
       password: user.password
