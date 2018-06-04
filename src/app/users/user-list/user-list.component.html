@@ -1,6 +1,7 @@
 <h6 class="text-center">Registered Users</h6><br/>
 <table class="table table-sm table-hover">
   <tr *ngFor="let user of userList">
+    <td>{{user.name}}</td>
       <td>{{user.email}}</td>
       <td>
         <a class="btn" (click)="onEdit(user)">

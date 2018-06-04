@@ -26,6 +26,7 @@ export class UserService {
 
   insertUser(user : User){
     this.userListRef.push({
+      name: user.name,
       email: user.email,
       password: user.password
     });
@@ -34,6 +35,7 @@ export class UserService {
   updateUser(user : User){
     this.userListRef.update(user.$key,
     {
+      name: user.name,
       email: user.email,
       password: user.password
     })

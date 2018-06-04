@@ -32,6 +32,7 @@ export class UserComponent implements OnInit {
 
     this.userService.selectedUser = {
       $key: null,
+      name: '',
       email: '',
       password: ''
     }
