@@ -18,6 +18,7 @@ import { UserComponent } from './users/user/user.component';
 import { UserListComponent } from './users/user-list/user-list.component';
 import { UsersComponent } from './users/users.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { AuthGaurdService } from './services/auth-gaurd.service';
 
 import { AuthService } from './services/auth.service';
 import { RouterModule, Routes} from '@angular/router';
@@ -25,7 +26,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: 'dashboard', component: DashboardComponent },
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGaurdService] },
   { path: '', component: LoginComponent }  
 ];
 
@@ -52,7 +53,7 @@ const appRoutes: Routes = [
     ToastrModule.forRoot(),
     BrowserAnimationsModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, AuthGaurdService],
   bootstrap: [AppComponent],
   exports: [UserComponent, UsersComponent, UserListComponent]
 })
