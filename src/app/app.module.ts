@@ -12,7 +12,6 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { environment } from '../environments/environment';
-// import { AppRoutes } from './app.routes';
 
 import { LoginComponent } from './login/login.component';
 import { UserComponent } from './users/user/user.component';

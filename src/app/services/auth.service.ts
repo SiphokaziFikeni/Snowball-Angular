@@ -18,7 +18,6 @@ export class AuthService {
         (user) => {
           if (user) {
             this.userDetails = user;
-            console.log(this.userDetails);
           }
           else {
             this.userDetails = null;
@@ -37,23 +36,29 @@ export class AuthService {
 
     logout() {
       this._firebaseAuth.auth.signOut();
-      // .then((res) => this.router.navigate(['/']));
     }
 
     emailLogin(email: string, password: string) {
       return this._firebaseAuth.auth
         .signInWithEmailAndPassword(email, password)
         .then(credential => {
-          console.log("USER LOGGGGGGGED IN");
-          // this.notify.update('Welcome to Firestarter!!!', 'success');
-          // return this.updateUserData(credential.user);
+          //user log in successful
         })
         .catch(error => this.handleError(error));
     }
 
+    resetPassword(emailAddress: string){
+      var auth = this._firebaseAuth.auth;
+  
+      auth.sendPasswordResetEmail(emailAddress).then(function() {
+        // Email sent.
+      }).catch(function(error) {
+        // An error happened.
+      });
+    }
+
     private handleError(error: Error) {
       console.error(error);
-      // this.notify.update(error.message, 'error');
     }
   
 

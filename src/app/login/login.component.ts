@@ -54,10 +54,19 @@ export class LoginComponent implements OnInit {
     const scope = this;
     this.auth.emailLogin(this.userForm.value['email'], this.userForm.value['password'])
     .then( (results) => {
-      
-      scope.router.navigate(['dashboard']);
+     
+      // if(this.auth.isLoggedIn()){
+        scope.router.navigate(['dashboard']);
+      // }
+
     });
   }
+
+  resetUserPassword() {
+    var emailAddress = this.userForm.value['email'];
+    this.auth.resetPassword(emailAddress);
+  }
+
 
   // signup(): void {
   //   this.auth.emailSignUp(this.userForm.value)
