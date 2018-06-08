@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from "../services/auth.service";
-// import { User } from '../users/shared/user.model';
-import { ReactiveFormsModule, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ReactiveFormsModule, FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -10,13 +9,11 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  // user = new User();
   userForm: FormGroup;
-  // newUser: boolean = true; // to toggle login or signup form
-  passReset: boolean = false;
+
   formErrors = {
-    'email': '',
-    'password': ''
+    'email': 'Enter valid email address',
+    'password': 'Invalid password'
   };
 
   validationMessages = {
@@ -38,27 +35,11 @@ export class LoginComponent implements OnInit {
     this.buildForm();
   }
 
-  // toggleForm(): void {
-  //   this.newUser = !this.newUser;
-  // }
-
-  // toggleForm() {
-  //   this.newUser = !this.newUser;
-  // }
-
-  // signup() {
-  //   this.auth.emailSignUp(this.userForm.value['email'], this.userForm.value['password']);
-  // }
-
   login() {
     const scope = this;
     this.auth.emailLogin(this.userForm.value['email'], this.userForm.value['password'])
     .then( (results) => {
-     
-      // if(this.auth.isLoggedIn()){
         scope.router.navigate(['dashboard']);
-      // }
-
     });
   }
 
@@ -67,33 +48,20 @@ export class LoginComponent implements OnInit {
     this.auth.resetPassword(emailAddress);
   }
 
-
-  // signup(): void {
-  //   this.auth.emailSignUp(this.userForm.value)
-  // }
-
-  // login(): void {
-  //   this.auth.emailLogin(this.userForm.value)
-  // }
-
-  // resetPassword() {
-  //   this.auth.resetPassword(this.userForm.value['email'])
-  //   .then(() => this.passReset = true)
-  // }
-
   buildForm(): void {
     this.userForm = this.formBuilder.group({
-      'email': ['', [
+      email: [null, [
           Validators.required,
           Validators.email
         ]
       ],
-      'password': ['', [
-        Validators.pattern('^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$'),
-        Validators.minLength(6),
-        Validators.maxLength(25)
+      password: [null, [
+          Validators.required,
+          Validators.pattern('^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$'),
+          Validators.minLength(6),
+          Validators.maxLength(25)
+        ]
       ]
-    ],
     });
 
     this.userForm.valueChanges.subscribe(data => this.onValueChanged(data));
